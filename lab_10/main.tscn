@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cnca8ht2dinjf"]
+
+[ext_resource type="Script" uid="uid://b1qw8pf8hx6qh" path="res://path_follow_3d.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://rdgc7fy5fguk" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://x7eawcq5lawc" path="res://mesh_instance_3d.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://shcc2ptcda2f" path="res://bullet.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b7tca2uvnaeyj" path="res://target.tscn" id="4_1bvp3"]
+
+[sub_resource type="Curve3D" id="Curve3D_7dm0k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.2897148, 0, -9.703, 0, 0, 0, 0, 0, 0, -4.8843536, 0, -30, 0, 0, 0, 0, 0, 0, 0, 0, -50),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0xm2m"]
+
+[node name="Node3D" type="Node3D" unique_id=1611420702]
+script = ExtResource("1_lquwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1560004301]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1865969331]
+curve = SubResource("Curve3D_7dm0k")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=825474488]
+transform = Transform3D(0.9732645, 0, -0.22967105, 0, 1, 0, 0.22967105, 0, 0.9732645, 0, 0, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D" unique_id=426277610]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_7dm0k")
+script = ExtResource("2_0xm2m")
+bullet_scene = ExtResource("3_h2yge")
+
+[node name="Area3D" type="Area3D" parent="Path3D/PathFollow3D/MeshInstance3D" unique_id=901364594]
+transform = Transform3D(1.0000037, 0, 0, 0, 1, 0, 0, 0, 1.0000037, 0, 0, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/MeshInstance3D/Area3D" unique_id=1227427994]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D" unique_id=520079605]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 2, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1426570235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.527376, 0, -12.42947)
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=740914899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6428437, 0, -38.6743)
+mesh = SubResource("CylinderMesh_0xm2m")
+
+[node name="Node3D" parent="." unique_id=932465163 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2064366, 0.5473063, -6.208804)
+
+[node name="Node3D2" parent="." unique_id=1273032380 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7747433, 0, -18.834032)
