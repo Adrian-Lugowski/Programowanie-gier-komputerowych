@@ -54,7 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2064366, 0.5473063, -6.2088
 [node name="Node3D2" parent="." unique_id=1273032380 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7747433, 0, -18.834032)
 
-[node name="WaveSpawner" type="Node" parent="." unique_id=1500809503 node_paths=PackedStringArray("path_follow")]
+[node name="WaveSpawner" type="Node" parent="." unique_id=1500809503]
 script = ExtResource("7_272bh")
-enemy_scene = ExtResource("5_7mycd")
-path_follow = NodePath("../Path3D/PathFollow3D")
+
+[node name="Node3D3" parent="." unique_id=989260928 instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.089544296, 0.51143456, -9.451119)
