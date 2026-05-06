@@ -4,12 +4,6 @@ const LIMIT_X = 5.0
 const LIMIT_Y = 3.0
 var move_speed = 10.0
 
-@export var bullet_scene: PackedScene
-var _shoot_cooldown: float = 0.0
-
-func _ready():
-	add_to_group("player")
-
 func _process(delta):
 	var input_dir = Vector2.ZERO
 	
@@ -27,14 +21,3 @@ func _process(delta):
 	
 	position.x = clamp(position.x, -LIMIT_X, LIMIT_X)
 	position.y = clamp(position.y, -LIMIT_Y, LIMIT_Y)
-	
-	if _shoot_cooldown > 0:
-		_shoot_cooldown -= delta
-		
-	if Input.is_action_just_pressed("ui_accept") and _shoot_cooldown <= 0:
-		_shoot_cooldown = 0.3 
-		
-		var bullet = bullet_scene.instantiate()
-		get_tree().root.add_child(bullet)
-		bullet.global_position = global_position
-		bullet.direction = Vector3(0, 0, -1)
