@@ -1,0 +1,64 @@
+extends Area3D
+
+const LIMIT_X = 5.0
+const LIMIT_Y = 3.0
+var move_speed = 10.0
+var hp: int = 100
+
+@export var bullet_scene: PackedScene
+var _shoot_cooldown: float = 0.0
+
+var _is_invincible: bool = false 
+
+func _ready():
+	add_to_group("player")
+
+func _process(delta):
+	var input_dir = Vector2.ZERO
+	
+	if Input.is_action_pressed("ui_right"):
+		input_dir.x += 1
+	if Input.is_action_pressed("ui_left"):
+		input_dir.x -= 1
+	if Input.is_action_pressed("ui_up"):
+		input_dir.y += 1
+	if Input.is_action_pressed("ui_down"):
+		input_dir.y -= 1
+		
+	position.x += input_dir.x * move_speed * delta
+	position.y += input_dir.y * move_speed * delta
+	
+	position.x = clamp(position.x, -LIMIT_X, LIMIT_X)
+	position.y = clamp(position.y, -LIMIT_Y, LIMIT_Y)
+	
+	if _shoot_cooldown > 0:
+		_shoot_cooldown -= delta
+		
+	if Input.is_action_just_pressed("ui_accept") and _shoot_cooldown <= 0:
+		_shoot_cooldown = 0.3 
+		var bullet = bullet_scene.instantiate()
+		get_tree().root.add_child(bullet)
+		bullet.global_position = global_position
+		bullet.direction = Vector3(0, 0, -1)
+
+	if Input.is_action_just_pressed("ui_accept") and not _is_invincible:
+		_perform_barrel_roll()
+
+
+func _perform_barrel_roll() -> void:
+	_is_invincible = true
+	$AnimationPlayer.play("barrel_roll")
+	
+	await $AnimationPlayer.animation_finished
+	
+	_is_invincible = false
+
+func _on_area_entered(area: Area3D) -> void:
+	_take_damage(10)
+
+func _take_damage(amount: int) -> void:
+	if _is_invincible:
+		return 
+		
+	hp -= amount
+	print("Statek uderzył w ścianę! Aktualne HP: ", hp)
