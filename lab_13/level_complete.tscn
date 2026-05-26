@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bph571ky03k7e"]
+
+[ext_resource type="Script" uid="uid://cl4rt6xn43lt0" path="res://level_complete.gd" id="1_sxtul"]
+
+[node name="Control" type="Control" unique_id=1705315244]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxtul")
+
+[node name="LevelCompleteLabel" type="Label" parent="." unique_id=1294484450]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 159.0
+offset_right = 619.0
+offset_bottom = 221.0
+text = "Wygrałeś"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="." unique_id=917829260]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 313.0
+offset_right = 667.0
+offset_bottom = 368.0
+
+[node name="MenuButton" type="Button" parent="." unique_id=761576871]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 441.0
+offset_right = 706.0
+offset_bottom = 571.0
+text = "Menu"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
