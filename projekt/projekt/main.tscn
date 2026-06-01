@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dr8uimd2yrwka"]
+
+[ext_resource type="PackedScene" uid="uid://b5wxolt0rgp8b" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=338913653]
+
+[node name="Player" parent="." unique_id=1262841985 instance=ExtResource("1_ig7tw")]
+position = Vector2(48, 32)
+
+[node name="RhythmTimer" type="Timer" parent="." unique_id=888032622]
+wait_time = 0.5
+autostart = true
