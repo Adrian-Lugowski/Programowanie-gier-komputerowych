@@ -70,9 +70,17 @@ func _process(delta):
 
 	if direction != Vector2.ZERO:
 		facing_direction = direction
-		position += direction * TILE_SIZE
-		can_move = false 
-
+		var next_position = position + (direction * TILE_SIZE)
+		var map_min_x = 0
+		var map_min_y = 0
+		var map_max_x = 1280
+		var map_max_y = 1280
+		if next_position.x >= map_min_x and next_position.x <= map_max_x and next_position.y >= map_min_y and next_position.y <= map_max_y:
+			position = next_position
+			can_move = false
+		else:
+			print("Ściana")
+			
 func _on_rhythm_timer_timeout():
 	if current_weapon == Weapon.HAMMER and Input.is_action_pressed("ui_accept"):
 		current_state = State.CHARGING
