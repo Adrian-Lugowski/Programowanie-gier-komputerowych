@@ -13,6 +13,7 @@ var charge_beats = 0
 const REQUIRED_BEATS = 3
 var facing_direction = Vector2.RIGHT
 
+var hp = 3
 var player_xp = 0
 var player_level = 1
 var base_damage = 1
@@ -91,3 +92,14 @@ func gain_xp(amount):
 		player_level += 1
 		base_damage += 1
 		print("LEVEL: ", player_level, ". Obrażenia: ", base_damage)
+		
+func take_damage(amount):
+	hp -= amount
+	print("HP: ", hp)
+	$Sprite2D.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.2).timeout
+	$Sprite2D.modulate = Color(1, 1, 1)
+	
+	if hp <= 0:
+		get_tree().call_deferred("change_scene_to_file", "res://game_over.tscn")
+	

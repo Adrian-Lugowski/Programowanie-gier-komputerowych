@@ -1,6 +1,7 @@
 extends Area2D
 
 var hp = 2
+var attack_damage = 1
 const TILE_SIZE =64
 
 func _ready():
@@ -33,12 +34,16 @@ func _on_rhythm_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if player:
-		var direction_to_player = global_position.direction_to(player.global_position)
-		var step = Vector2.ZERO
-		
-		if abs(direction_to_player.x) > abs(direction_to_player.y):
-			step.x = sign(direction_to_player.x)
+		var dist = global_position.distance_to(player.global_position)
+		if dist <= TILE_SIZE * 1.1 and dist > 0:
+			print("Przeciwnik atakuje")
+			if player.has_method("take_damage"):
+				player.take_damage(attack_damage)
 		else:
-			step.y = sign(direction_to_player.y)
-		
-		position += step * TILE_SIZE
+			var direction_to_player = global_position.direction_to(player.global_position)
+			var step = Vector2.ZERO
+			if abs(direction_to_player.x) > abs(direction_to_player.y):
+				step.x = sign(direction_to_player.x)
+			else:
+				step.y = sign(direction_to_player.y)
+			position += step * TILE_SIZE
