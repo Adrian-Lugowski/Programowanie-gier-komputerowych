@@ -17,6 +17,11 @@ func _process(delta):
 	if current_state == State.CHARGING and Input.is_action_just_released("ui_accept"):
 		if charge_beats >= REQUIRED_BEATS:
 			print("Atak")
+			var all_enemies = get_tree().get_nodes_in_group("enemies")
+			for enemy in all_enemies:
+				if global_position.distance_to(enemy.global_position) <= TILE_SIZE * 1.5:
+					enemy.queue_free()
+					print("Wróg pogonany")
 		else:
 			print("Atak przerwany")
 		
