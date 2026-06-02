@@ -82,3 +82,12 @@ func _on_rhythm_timer_timeout():
 	else:
 		can_move = true
 		print("|")
+		
+func gain_xp(amount):
+	player_xp += amount
+	print("XP: ", player_xp, "/5")
+	if player_xp >= 5:
+		player_xp = 0
+		player_level += 1
+		base_damage += 1
+		print("LEVEL: ", player_level, ". Obrażenia: ", base_damage)

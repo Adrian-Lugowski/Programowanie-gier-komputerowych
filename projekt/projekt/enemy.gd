@@ -11,7 +11,12 @@ func take_damage(amaount):
 	print("Trawiony, zostało:", hp, "HP")
 	
 	if hp <= 0:
-		get_tree().call_deferred("change_scene_to_file", "res://lab_15/win.tscn")
+		print("Przeciwnik pokonany")
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			player.gain_xp(6)
+			
+		get_tree().call_deferred("change_scene_to_file", "res://win.tscn")
 		call_deferred("queue_free")
 
 func _on_area_entered(area):
