@@ -50,6 +50,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Enemy" parent="." unique_id=1600282648 instance=ExtResource("2_0xm2m")]
-position = Vector2(345, 323)
+position = Vector2(320, 320)
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
+[connection signal="timeout" from="RhythmTimer" to="Enemy" method="_on_rhythm_timer_timeout"]
