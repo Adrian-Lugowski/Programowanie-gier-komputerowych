@@ -5,6 +5,11 @@
 
 [node name="Main" type="Node2D" unique_id=338913653]
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1418358551]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.4006598, 0.45182288, 0.099731065, 1)
+
 [node name="Player" parent="." unique_id=1262841985 instance=ExtResource("1_ig7tw")]
 
 [node name="RhythmTimer" type="Timer" parent="." unique_id=888032622]

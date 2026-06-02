@@ -20,8 +20,8 @@ func _process(delta):
 			var all_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in all_enemies:
 				if global_position.distance_to(enemy.global_position) <= TILE_SIZE * 1.5:
-					enemy.queue_free()
-					get_tree().change_scene_to_file("res://win.tscn")
+					if enemy.has_method("take_damage"):
+						enemy.take_damage(1)
 		else:
 			print("Atak przerwany")
 		
