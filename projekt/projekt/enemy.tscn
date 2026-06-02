@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://0g0pntwfb1t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(64, 64)
+
+[node name="Area2D" type="Area2D" unique_id=1600282648 groups=["enemies"]]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1218642955]
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.28997135, 0.4190446, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377856228]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_7xaro")
