@@ -52,7 +52,7 @@ autostart = true
 [node name="Enemy" parent="." unique_id=1600282648 instance=ExtResource("2_0xm2m")]
 position = Vector2(320, 320)
 
-[node name="Enemy2" parent="." unique_id=1362181892 instance=ExtResource("2_0xm2m")]
+[node name="Enemy2" parent="." unique_id=44928916 instance=ExtResource("2_0xm2m")]
 position = Vector2(640, 160)
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]

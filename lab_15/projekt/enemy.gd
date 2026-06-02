@@ -26,7 +26,7 @@ func _on_area_entered(area):
 	if area.name == "Player":
 		get_tree().call_deferred("change_scene_to_file", "res://game_over.tscn")
 		
-#func _on_rhythm_timer_timeout():
+func _on_rhythm_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if player:
