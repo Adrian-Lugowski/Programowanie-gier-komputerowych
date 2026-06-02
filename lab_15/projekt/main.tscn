@@ -45,7 +45,7 @@ tile_set = SubResource("TileSet_lquwl")
 
 [node name="Player" parent="." unique_id=1262841985 instance=ExtResource("1_ig7tw")]
 
-[node name="RhythmTimer" type="Timer" parent="." unique_id=888032622]
+[node name="RhythmTimer" type="Timer" parent="." unique_id=888032622 groups=["metronom"]]
 wait_time = 0.5
 autostart = true
 
@@ -56,4 +56,3 @@ position = Vector2(320, 320)
 position = Vector2(640, 160)
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
-[connection signal="timeout" from="RhythmTimer" to="Enemy" method="_on_rhythm_timer_timeout"]
