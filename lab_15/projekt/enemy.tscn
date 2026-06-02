@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0g0pntwfb1t7"]
 
 [ext_resource type="Script" uid="uid://d1i8px7iqav63" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://oeq5jdlhwgqs" path="res://assets/sprites/Tiles/tile_0096.png" id="2_4gyqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(50, 50)
@@ -8,10 +9,10 @@ size = Vector2(50, 50)
 [node name="Enemy" type="Area2D" unique_id=1600282648 groups=["enemies"]]
 script = ExtResource("1_7k104")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1218642955]
-offset_right = 64.0
-offset_bottom = 64.0
-color = Color(0.28997135, 0.4190446, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1396562049]
+position = Vector2(32, 32)
+scale = Vector2(4, 4)
+texture = ExtResource("2_4gyqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377856228]
 position = Vector2(32, 32)

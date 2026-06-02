@@ -73,8 +73,8 @@ func _process(delta):
 		var next_position = position + (direction * TILE_SIZE)
 		var map_min_x = 0
 		var map_min_y = 0
-		var map_max_x = 1280
-		var map_max_y = 1280
+		var map_max_x = 2112
+		var map_max_y = 1024
 		if next_position.x >= map_min_x and next_position.x <= map_max_x and next_position.y >= map_min_y and next_position.y <= map_max_y:
 			position = next_position
 			can_move = false
