@@ -7,8 +7,8 @@ const TILE_SIZE =64
 func _ready():
 	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
 	var timer = get_tree().get_first_node_in_group("metronom")
-	if timer:
-		timer.timeout.connect(_on_rhythm_timer_timeout)
+	#if timer:
+		#timer.timeout.connect(_on_rhythm_timer_timeout)
 
 func take_damage(amaount):
 	hp -= amaount

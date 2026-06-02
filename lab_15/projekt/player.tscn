@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b5wxolt0rgp8b"]
 
 [ext_resource type="Script" uid="uid://c1flh5gwa7g26" path="res://player.gd" id="1_4flbx"]
-[ext_resource type="Texture2D" uid="uid://dp2mrskrm8ki8" path="res://assets/sprites/player/cat1.jpg" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bs6esqy3dx1cq" path="res://assets/sprites/Tiles/tile_0087.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
 size = Vector2(50, 50)
@@ -11,7 +11,7 @@ script = ExtResource("1_4flbx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=164157479]
 position = Vector2(32, 32)
-scale = Vector2(0.10958904, 0.110344835)
+scale = Vector2(4, 4)
 texture = ExtResource("2_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=248943606]
@@ -20,8 +20,8 @@ shape = SubResource("RectangleShape2D_sh265")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1540618014]
 position = Vector2(32, 32)
-limit_left = 0
-limit_top = 0
+limit_left = -64
+limit_top = -128
 limit_right = 1280
 limit_bottom = 1280
 position_smoothing_enabled = true
