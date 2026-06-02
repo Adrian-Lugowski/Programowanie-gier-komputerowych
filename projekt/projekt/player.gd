@@ -6,33 +6,58 @@ var can_move = false
 enum State { IDLE, CHARGING }
 var current_state = State.IDLE
 
+enum Weapon { SWORD, HAMMER }
+var current_weapon = Weapon.SWORD
+
 var charge_beats = 0
 const REQUIRED_BEATS = 3
+var facing_direction = Vector2.RIGHT
+
+var player_xp = 0
+var player_level = 1
+var base_damage = 1
 
 func _ready():
-
 	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
 
 func _process(delta):
+	if Input.is_action_just_pressed("equip_sword"):
+		current_weapon = Weapon.SWORD
+		print("MIECZ")
+	elif Input.is_action_just_pressed("equip_hammer"):
+		current_weapon = Weapon.HAMMER
+		print("MŁOT")
+		
+	# Atak młotem
 	if current_state == State.CHARGING and Input.is_action_just_released("ui_accept"):
 		if charge_beats >= REQUIRED_BEATS:
-			print("Atak")
+			print("Atak młotem")
 			var all_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in all_enemies:
 				if global_position.distance_to(enemy.global_position) <= TILE_SIZE * 1.5:
 					if enemy.has_method("take_damage"):
-						enemy.take_damage(1)
+						enemy.take_damage(base_damage + 1)
 		else:
 			print("Atak przerwany")
 		
 		current_state = State.IDLE
 		charge_beats = 0
-
+		$Sprite2D.modulate = Color(1, 1, 1)
+		
+	# Atak mieczem
+	if current_state == State.IDLE and current_weapon == Weapon.SWORD and Input.is_action_just_pressed("ui_accept"):
+		var attack_pos = global_position + (facing_direction * TILE_SIZE)
+		print("Atak mieczem: ", facing_direction)
+		var all_enemies= get_tree().get_nodes_in_group("enemies")
+		for enemy in all_enemies:
+			if enemy.global_position.distance_to(attack_pos) < 10:
+				if enemy.has_method("take_damage"):
+					enemy.take_damage(base_damage)
+					
 	if not can_move or current_state == State.CHARGING:
 		return
 
 	var direction = Vector2.ZERO
-	
 	if Input.is_action_just_pressed("ui_right"):
 		direction = Vector2.RIGHT
 	elif Input.is_action_just_pressed("ui_left"):
@@ -43,16 +68,17 @@ func _process(delta):
 		direction = Vector2.UP
 
 	if direction != Vector2.ZERO:
+		facing_direction = direction
 		position += direction * TILE_SIZE
 		can_move = false 
 
 func _on_rhythm_timer_timeout():
-	if Input.is_action_pressed("ui_accept"):
+	if current_weapon == Weapon.HAMMER and Input.is_action_pressed("ui_accept"):
 		current_state = State.CHARGING
 		charge_beats += 1
 		print("Ładowanie: ", charge_beats, "/", REQUIRED_BEATS)
-		
+		$Sprite2D.modulate = Color(1, 0, 0)
 		can_move = false 
 	else:
 		can_move = true
-		print(".")
+		print("|")
