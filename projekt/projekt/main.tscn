@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dr8uimd2yrwka"]
 
 [ext_resource type="PackedScene" uid="uid://b5wxolt0rgp8b" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://0g0pntwfb1t7" path="res://enemy.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=338913653]
 
@@ -9,5 +10,8 @@
 [node name="RhythmTimer" type="Timer" parent="." unique_id=888032622]
 wait_time = 0.5
 autostart = true
+
+[node name="Enemy" parent="." unique_id=1600282648 instance=ExtResource("2_0xm2m")]
+position = Vector2(627, 162)
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
