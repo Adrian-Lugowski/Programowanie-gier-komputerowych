@@ -27,7 +27,6 @@ func _process(delta):
 		
 		current_state = State.IDLE
 		charge_beats = 0
-		$ColorRect.color = Color(0, 0, 1)
 
 	if not can_move or current_state == State.CHARGING:
 		return
@@ -53,7 +52,6 @@ func _on_rhythm_timer_timeout():
 		charge_beats += 1
 		print("Ładowanie: ", charge_beats, "/", REQUIRED_BEATS)
 		
-		$ColorRect.color = Color(1, 0, 0)
 		can_move = false 
 	else:
 		can_move = true

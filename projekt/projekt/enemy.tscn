@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1i8px7iqav63" path="res://enemy.gd" id="1_7k104"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
-size = Vector2(64, 64)
+size = Vector2(50, 50)
 
 [node name="Enemy" type="Area2D" unique_id=1600282648 groups=["enemies"]]
 script = ExtResource("1_7k104")

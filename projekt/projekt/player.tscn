@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2mrskrm8ki8" path="res://assets/sprites/player/cat1.jpg" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
-size = Vector2(64, 64)
+size = Vector2(50, 50)
 
 [node name="Player" type="Area2D" unique_id=1262841985]
 script = ExtResource("1_4flbx")
