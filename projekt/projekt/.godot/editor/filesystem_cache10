@@ -1,6 +1,0 @@
-63f7b34db8d8cdea90c76aacccf841ec
-::res://::1780393970
-icon.svg::CompressedTexture2D::5119497310043009129::1780393170::1780393221::1::::<><><>0<>0<>4c62893e970f972a913fe0c4ebb919be<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-main.tscn::PackedScene::8421826121190532180::1780393170::0::1::::<><><>0<>0<><>::uid://b5wxolt0rgp8b::::res://player.tscn
-player.gd::GDScript::6608755164193284109::1780393170::0::1::::<>Area2D<><>0<>0<><>::
-player.tscn::PackedScene::4538924403638677951::1780393170::0::1::::<><><>0<>0<><>::uid://c1flh5gwa7g26::::res://player.gd
