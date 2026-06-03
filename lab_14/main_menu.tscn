@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://chun2yeikgt4t"]
+
+[ext_resource type="Script" uid="uid://ldcmei8do4p6" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="Control" type="Control" unique_id=1607211678]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="Label" type="Label" parent="." unique_id=264730010]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 194.0
+offset_right = 673.0
+offset_bottom = 251.0
+text = "Star Fox"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=2016071677]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 316.0
+offset_right = 692.0
+offset_bottom = 378.0
+text = "Graj"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
