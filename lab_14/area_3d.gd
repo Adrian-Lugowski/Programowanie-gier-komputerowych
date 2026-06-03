@@ -1,5 +1,8 @@
 extends Area3D
 
+const FIRE_COOLDOWN: float = 0.3
+const WALL_DAMAGE: int = 20
+const ENEMY_DAMAGE: int = 10
 const LIMIT_X = 5.0
 const LIMIT_Y = 3.0
 var move_speed = 10.0
@@ -34,7 +37,7 @@ func _process(delta):
 		_shoot_cooldown -= delta
 		
 	if Input.is_action_just_pressed("ui_accept") and _shoot_cooldown <= 0:
-		_shoot_cooldown = 0.3 
+		_shoot_cooldown = FIRE_COOLDOWN
 		var bullet = bullet_scene.instantiate()
 		get_tree().root.add_child(bullet)
 		bullet.global_position = global_position
@@ -53,7 +56,7 @@ func _perform_barrel_roll() -> void:
 	_is_invincible = false
 
 func _on_area_entered(area: Area3D) -> void:
-	_take_damage(10)
+	_take_damage(ENEMY_DAMAGE)
 	
 func _take_damage(amount: int) -> void:
 	if _is_invincible:
@@ -62,4 +65,4 @@ func _take_damage(amount: int) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("walls"):
-		_take_damage(20)
+		_take_damage(WALL_DAMAGE)

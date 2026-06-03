@@ -42,8 +42,9 @@ func _start_attack() -> void:
 
 	var tween = create_tween()
 	var start_x = position.x
-	tween.tween_property(self, "position:x", start_x + 6.0, 2.0)
-	tween.tween_property(self, "position:x", start_x - 6.0, 2.0)
+	tween.tween_property(self, "position:x", start_x + 4.0, 2.0)
+	tween.tween_property(self, "position:x", start_x - 4.0, 2.0)
+	tween.tween_property(self, "position:x", start_x, 1.0)
 	await tween.finished
 	
 	if current_state != State.DEATH:
@@ -51,7 +52,7 @@ func _start_attack() -> void:
 
 func _start_retreat() -> void:
 	var tween = create_tween()
-	tween.tween_property(self, "position:z", position.z - 5.0, 1.5)
+	tween.tween_property(self, "position:z", position.z - 4.0, 1.5)
 	await tween.finished
 	
 	if current_state != State.DEATH:
@@ -82,6 +83,7 @@ func take_hit(damage: int) -> void:
 		_enter_state(State.DEATH)
 
 func _on_hitbox_phase_1_area_entered(area: Area3D) -> void:
+	print("Coś mnie dotknęło: ", area.name)
 	if area.is_in_group("player_bullets"):
 		take_hit(5)
 		area.queue_free()
