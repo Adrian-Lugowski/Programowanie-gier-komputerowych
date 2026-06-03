@@ -31,7 +31,7 @@ func _spawn_wave(wave_data: Dictionary) -> void:
 		var enemy = enemy_scene.instantiate()
 		var x_position = wave_data["x_positions"][i]
 		var z_offset = wave_data["z_offset"]
-		enemy.global_position = path_follow.global_position + Vector3(x_position, 0, z_offset)
+		enemy.position = path_follow.global_position + Vector3(x_position, 0, z_offset)
 		get_tree().root.add_child(enemy)
 		enemy.died.connect(GameManager.add_score)
 		enemy.died.connect(_on_enemy_destroyed)

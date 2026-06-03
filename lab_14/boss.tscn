@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b50cctqkp73mj"]
+
+[ext_resource type="Script" uid="uid://bl76kw38yuq1o" path="res://boss.gd" id="1_skx2t"]
+[ext_resource type="PackedScene" uid="uid://bimdlusx1lygq" path="res://enemy_bullet.tscn" id="2_lnbgr"]
+[ext_resource type="PackedScene" uid="uid://tbnda7yj80ke" path="res://explosion.tscn" id="3_o1i15"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mihky"]
+albedo_color = Color(0.84705883, 0.05882353, 0.10980392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bnu1"]
+material = SubResource("StandardMaterial3D_mihky")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mihky"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mihky"]
+
+[node name="Boss" type="Node3D" unique_id=287115927]
+script = ExtResource("1_skx2t")
+enemy_bullet_scene = ExtResource("2_lnbgr")
+explosion_scene = ExtResource("3_o1i15")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1679270201]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_0bnu1")
+
+[node name="HitboxPhase1" type="Area3D" parent="." unique_id=2062425430]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxPhase1" unique_id=1934167118]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_mihky")
+
+[node name="HitboxPhase2" type="Area3D" parent="." unique_id=1277389696]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxPhase2" unique_id=592225068]
+shape = SubResource("SphereShape3D_mihky")
+disabled = true
+
+[connection signal="area_entered" from="HitboxPhase1" to="." method="_on_hitbox_phase_1_area_entered"]
+[connection signal="area_entered" from="HitboxPhase2" to="." method="_on_hitbox_phase_2_area_entered"]

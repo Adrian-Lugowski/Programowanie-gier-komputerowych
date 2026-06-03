@@ -26,3 +26,7 @@ func _on_lives_changed(new_lives: int) -> void:
 
 func _on_hp_changed(new_hp: int) -> void:
 	$HPProgressBar.value = new_hp
+
+
+func _on_boss_died() -> void:
+	GameManager.level_complete.emit()

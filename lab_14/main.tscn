@@ -9,10 +9,11 @@
 [ext_resource type="Script" uid="uid://dvglvhvjc8ij1" path="res://wave_spawner.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://mogyc4ieda3" path="res://camera_3d.gd" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://bnmbk3esnje0x" path="res://hud.gd" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://b50cctqkp73mj" path="res://boss.tscn" id="10_4c57u"]
 
 [sub_resource type="Curve3D" id="Curve3D_7dm0k"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.2897148, 0, -9.703, 0, 0, 0, 0, 0, 0, -4.8843536, 0, -30, 0, 0, 0, 0, 0, 0, 0, 0, -50),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.48987007, 0, -9.703, 0, 0, 0, 0, 0, 0, -0.8418684, 0, -30, 0, 0, 0, 0, 0, 0, 0, 0, -67.82688),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -87,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5
 curve = SubResource("Curve3D_7dm0k")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=825474488]
-transform = Transform3D(0.9732645, 0, -0.22967105, 0, 1, 0, 0.22967105, 0, 0.9732645, 0, 0, 0)
+transform = Transform3D(0.9987197, 0, -0.05042182, 0, 1, 0, 0.05042182, 0, 0.9987197, 0, 0, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="Area3D" type="Area3D" parent="Path3D/PathFollow3D" unique_id=901364594]
@@ -166,5 +167,9 @@ offset_bottom = 60.0
 offset_right = 54.0
 offset_bottom = 30.0
 
+[node name="Boss" parent="." unique_id=287115927 instance=ExtResource("10_4c57u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.857254)
+
 [connection signal="area_entered" from="Path3D/PathFollow3D/Area3D" to="Path3D/PathFollow3D/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/Area3D" to="Path3D/PathFollow3D/Area3D" method="_on_body_entered"]
+[connection signal="died" from="Boss" to="HUD" method="_on_boss_died"]
