@@ -38,6 +38,3 @@ func _spawn_wave(wave_data: Dictionary) -> void:
 
 func _on_enemy_destroyed(_points: int) -> void:
 	_enemies_defeated += 1
-	
-	if _enemies_defeated >= _total_enemies:
-		GameManager.level_complete.emit()

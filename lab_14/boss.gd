@@ -59,11 +59,17 @@ func _start_retreat() -> void:
 		_enter_state(State.ATTACK)
 
 func _start_death() -> void:
-	died.emit()
+	hide()
+	hitbox1.set_deferred("disabled", true)
+	hitbox2.set_deferred("disabled", true)
+
 	if explosion_scene:
 		var explosion = explosion_scene.instantiate()
-		get_tree().root.add_child(explosion)
+		get_parent().add_child(explosion)
 		explosion.global_position = global_position
+		
+	await get_tree().create_timer(1.0).timeout
+	died.emit()
 	queue_free()
 
 func take_hit(damage: int) -> void:
@@ -77,13 +83,12 @@ func take_hit(damage: int) -> void:
 		phase2_active = true
 		hitbox1.set_deferred("disabled", true)
 		hitbox2.set_deferred("disabled", false)
-		print("Faza 2: Hitbox zmieniony!")
+		print("Faza 2: Hitbox zmieniony")
 
 	if hp <= 0:
 		_enter_state(State.DEATH)
 
 func _on_hitbox_phase_1_area_entered(area: Area3D) -> void:
-	print("Coś mnie dotknęło: ", area.name)
 	if area.is_in_group("player_bullets"):
 		take_hit(5)
 		area.queue_free()

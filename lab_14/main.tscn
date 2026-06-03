@@ -180,7 +180,7 @@ offset_right = 54.0
 offset_bottom = 30.0
 
 [node name="Boss" parent="." unique_id=287115927 instance=ExtResource("10_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.167503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.931416)
 
 [connection signal="area_entered" from="Path3D/PathFollow3D/Area3D" to="Path3D/PathFollow3D/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/Area3D" to="Path3D/PathFollow3D/Area3D" method="_on_body_entered"]
