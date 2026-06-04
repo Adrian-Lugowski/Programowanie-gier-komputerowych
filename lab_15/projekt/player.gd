@@ -3,6 +3,8 @@ extends Area2D
 const TILE_SIZE = 64
 var can_move = false
 
+@onready var ray = $RayCast2D
+
 enum State { IDLE, CHARGING }
 var current_state = State.IDLE
 
@@ -76,8 +78,13 @@ func _process(delta):
 		var map_max_x = 2112
 		var map_max_y = 1024
 		if next_position.x >= map_min_x and next_position.x <= map_max_x and next_position.y >= map_min_y and next_position.y <= map_max_y:
-			position = next_position
-			can_move = false
+			ray.target_position = direction * TILE_SIZE
+			ray.force_raycast_update()
+			if not ray.is_colliding():
+				position = next_position
+				can_move = false
+			else:
+				print("Kafelek")
 		else:
 			print("Ściana")
 			

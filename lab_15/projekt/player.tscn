@@ -25,3 +25,7 @@ limit_top = -128
 limit_right = 2240
 limit_bottom = 1152
 position_smoothing_enabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1599264831]
+enabled = false
+collide_with_areas = true
