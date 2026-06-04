@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5wxolt0rgp8b" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://0g0pntwfb1t7" path="res://enemy.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://b6728er8qq8wu" path="res://assets/sprites/Tilemap/tilemap_packed.png" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://btkppg5hgrih2" path="res://wave_manager.gd" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("1_1bvp3")
@@ -343,5 +344,9 @@ position = Vector2(640, 160)
 
 [node name="Enemy3" parent="." unique_id=2129055631 instance=ExtResource("2_0xm2m")]
 position = Vector2(1867, 477)
+
+[node name="WaveManager" type="Node" parent="." unique_id=982826231]
+script = ExtResource("5_lquwl")
+enemy_scene = ExtResource("2_0xm2m")
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
