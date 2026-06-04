@@ -336,17 +336,40 @@ tile_set = SubResource("TileSet_5vw27")
 wait_time = 0.5
 autostart = true
 
-[node name="Enemy" parent="." unique_id=1600282648 instance=ExtResource("2_0xm2m")]
-position = Vector2(320, 320)
-
-[node name="Enemy2" parent="." unique_id=44928916 instance=ExtResource("2_0xm2m")]
-position = Vector2(640, 160)
-
-[node name="Enemy3" parent="." unique_id=2129055631 instance=ExtResource("2_0xm2m")]
-position = Vector2(1867, 477)
-
 [node name="WaveManager" type="Node" parent="." unique_id=982826231]
 script = ExtResource("5_lquwl")
 enemy_scene = ExtResource("2_0xm2m")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1876353552]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1445356765]
+position = Vector2(576, 192)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=134326829]
+position = Vector2(192, 832)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=1915062174]
+position = Vector2(1280, 128)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1380933047]
+position = Vector2(1152, 512)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=767989403]
+position = Vector2(1984, 128)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=1807354042]
+position = Vector2(512, 576)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=1112039102]
+position = Vector2(1088, 896)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" unique_id=1847961658]
+position = Vector2(1920, 832)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPoints" unique_id=1322515938]
+position = Vector2(192, 256)
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPoints" unique_id=2063066356]
+position = Vector2(896, 384)
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
