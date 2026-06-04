@@ -19,6 +19,7 @@ position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_7xaro")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1905198776]
+position = Vector2(32, 32)
 enabled = false
 collide_with_areas = true
 

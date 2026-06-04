@@ -84,7 +84,8 @@ func _process(delta):
 				position = next_position
 				can_move = false
 			else:
-				print("Kafelek")
+				var uderzony_obiekt = ray.get_collider()
+				print("Grid")
 		else:
 			print("Ściana")
 			

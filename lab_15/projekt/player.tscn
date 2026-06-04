@@ -27,5 +27,6 @@ limit_bottom = 1152
 position_smoothing_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1599264831]
+position = Vector2(32, 32)
 enabled = false
 collide_with_areas = true
