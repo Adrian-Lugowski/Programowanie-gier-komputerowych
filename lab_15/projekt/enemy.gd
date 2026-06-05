@@ -20,10 +20,6 @@ func take_damage(amaount):
 		if player:
 			player.gain_xp(6)
 			
-		var enemies_left = get_tree().get_nodes_in_group("enemies").size()
-		if enemies_left <= 1:
-			get_tree().call_deferred("change_scene_to_file", "res://win.tscn")
-			
 		call_deferred("queue_free")
 		
 func _on_area_entered(area):
