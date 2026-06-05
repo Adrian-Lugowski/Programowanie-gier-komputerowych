@@ -9,9 +9,11 @@ const TILE_SIZE = 64
 func _process(delta):
 	if not is_spawning:
 		var enemies = get_tree().get_nodes_in_group("enemies")
-		
 		if enemies.size() <= 0:
-			start_next_wave()
+			if current_wave == 5:
+				win_game()
+			else:
+				start_next_wave()
 
 func start_next_wave():
 	is_spawning = true
@@ -41,3 +43,7 @@ func spawn_enemy():
 			enemy.position = random_spawn.global_position
 			
 		get_parent().add_child(enemy)
+
+func win_game():
+	is_spawning = true
+	get_tree().change_scene_to_file("res://win.tscn")
