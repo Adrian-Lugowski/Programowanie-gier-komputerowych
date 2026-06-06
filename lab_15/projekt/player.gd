@@ -13,7 +13,7 @@ enum Weapon { SWORD, HAMMER }
 var current_weapon = Weapon.SWORD
 
 var charge_beats = 0
-const REQUIRED_BEATS = 4
+const REQUIRED_BEATS = 3
 var facing_direction = Vector2.RIGHT
 
 var hp = 5
@@ -50,6 +50,7 @@ func _process(delta):
 	if current_state == State.CHARGING and Input.is_action_just_released("ui_accept"):
 		if charge_beats >= REQUIRED_BEATS:
 			print("Atak młotem")
+			screen_shake()
 			var all_enemies = get_tree().get_nodes_in_group("enemies")
 			for enemy in all_enemies:
 				if global_position.distance_to(enemy.global_position) <= TILE_SIZE * 1.5:
@@ -158,6 +159,7 @@ func gain_xp(amount):
 func take_damage(amount):
 	hp -= amount
 	print("HP: ", hp)
+	screen_shake()
 	$Sprite2D.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.2).timeout
 	$Sprite2D.modulate = Color(1, 1, 1)
@@ -169,4 +171,12 @@ func take_damage(amount):
 		
 	if hp <= 0:
 		get_tree().call_deferred("change_scene_to_file", "res://game_over.tscn")
+		
+func screen_shake():
+	var camera = get_viewport().get_camera_2d()
+	if camera:
+		var tween = create_tween()
+		var random_offset = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+		tween.tween_property(camera, "offset", random_offset, 0.05)
+		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
 	
