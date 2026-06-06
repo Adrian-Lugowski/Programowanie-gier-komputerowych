@@ -21,8 +21,10 @@ var max_hp = 5
 var player_xp = 0
 var player_level = 1
 var base_damage = 1
+var original_sprite_y = 0.0
 
 func _ready():
+	original_sprite_y = $Sprite2D.position.y
 	var spawn_points = get_tree().get_nodes_in_group("spawn_points_player")
 	if spawn_points.size() > 0:
 		var random_spawn = spawn_points.pick_random()
@@ -115,6 +117,7 @@ func _on_rhythm_timer_timeout():
 	if audio:
 		audio.play_beat()
 	
+	bounce_to_beat()
 	if current_weapon == Weapon.HAMMER and Input.is_action_pressed("ui_accept"):
 		current_state = State.CHARGING
 		charge_beats += 1
@@ -180,3 +183,9 @@ func screen_shake():
 		tween.tween_property(camera, "offset", random_offset, 0.05)
 		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
 	
+func bounce_to_beat():
+	var sprite = $Sprite2D
+	if sprite:
+		var tween = create_tween()
+		tween.tween_property(sprite, "position:y", original_sprite_y - 12.0, 0.1).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(sprite, "position:y", original_sprite_y, 0.1).set_trans(Tween.TRANS_SINE)
