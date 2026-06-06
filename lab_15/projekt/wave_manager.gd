@@ -39,7 +39,7 @@ func spawn_enemy():
 		if "damage" in enemy:
 			enemy.attack_damage += int(current_wave / 2.0)
 			
-		var spawn_points_node = get_parent().get_node_or_null("SpawnPoints")
+		var spawn_points_node = get_parent().get_node_or_null("SpawnPointsEnemy")
 		
 		if spawn_points_node and spawn_points_node.get_child_count() > 0:
 			var spawn_points = spawn_points_node.get_children()

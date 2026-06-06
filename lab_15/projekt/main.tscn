@@ -351,37 +351,54 @@ autostart = true
 script = ExtResource("5_lquwl")
 enemy_scene = ExtResource("2_0xm2m")
 
-[node name="SpawnPoints" type="Node2D" parent="." unique_id=1876353552]
+[node name="SpawnPointsEnemy" type="Node2D" parent="." unique_id=1876353552]
 
-[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1445356765]
+[node name="Marker2D" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1445356765]
 position = Vector2(512, 128)
 
-[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=134326829]
+[node name="Marker2D2" type="Marker2D" parent="SpawnPointsEnemy" unique_id=134326829]
 position = Vector2(192, 832)
 
-[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=1915062174]
+[node name="Marker2D3" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1915062174]
 position = Vector2(1280, 128)
 
-[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1380933047]
+[node name="Marker2D4" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1380933047]
 position = Vector2(1152, 704)
 
-[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=767989403]
+[node name="Marker2D5" type="Marker2D" parent="SpawnPointsEnemy" unique_id=767989403]
 position = Vector2(1984, 128)
 
-[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=1807354042]
+[node name="Marker2D6" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1807354042]
 position = Vector2(1664, 768)
 
-[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=1112039102]
+[node name="Marker2D7" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1112039102]
 position = Vector2(1024, 960)
 
-[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" unique_id=1847961658]
+[node name="Marker2D8" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1847961658]
 position = Vector2(1984, 960)
 
-[node name="Marker2D9" type="Marker2D" parent="SpawnPoints" unique_id=1322515938]
+[node name="Marker2D9" type="Marker2D" parent="SpawnPointsEnemy" unique_id=1322515938]
 position = Vector2(640, 384)
 
-[node name="Marker2D10" type="Marker2D" parent="SpawnPoints" unique_id=2063066356]
+[node name="Marker2D10" type="Marker2D" parent="SpawnPointsEnemy" unique_id=2063066356]
 position = Vector2(896, 384)
+
+[node name="SpawnPointsPlayer" type="Node2D" parent="." unique_id=742211848]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPointsPlayer" unique_id=365727555 groups=["spawn_points_player"]]
+position = Vector2(1536, 256)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPointsPlayer" unique_id=143819508 groups=["spawn_points_player"]]
+position = Vector2(1024, 512)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPointsPlayer" unique_id=20113572 groups=["spawn_points_player"]]
+position = Vector2(320, 640)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPointsPlayer" unique_id=552095430 groups=["spawn_points_player"]]
+position = Vector2(1152, 832)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPointsPlayer" unique_id=2000329222 groups=["spawn_points_player"]]
+position = Vector2(576, 256)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=980188000 groups=["hud"]]
 script = ExtResource("6_7mycd")

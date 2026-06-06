@@ -12,7 +12,7 @@ enum Weapon { SWORD, HAMMER }
 var current_weapon = Weapon.SWORD
 
 var charge_beats = 0
-const REQUIRED_BEATS = 3
+const REQUIRED_BEATS = 4
 var facing_direction = Vector2.RIGHT
 
 var hp = 5
@@ -22,7 +22,12 @@ var player_level = 1
 var base_damage = 1
 
 func _ready():
-	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
+	var spawn_points = get_tree().get_nodes_in_group("spawn_points_player")
+	if spawn_points.size() > 0:
+		var random_spawn = spawn_points.pick_random()
+		global_position = random_spawn.global_position
+	else:
+		position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.call_deferred("update_hp", hp)
@@ -111,9 +116,25 @@ func _on_rhythm_timer_timeout():
 		current_state = State.CHARGING
 		charge_beats += 1
 		print("Ładowanie: ", charge_beats, "/", REQUIRED_BEATS)
-		$Sprite2D.modulate = Color(1, 0, 0)
-		can_move = false 
+		
+		if charge_beats < REQUIRED_BEATS:
+			$Sprite2D.modulate = Color(1, 0, 0) 
+			can_move = false
+		elif charge_beats == REQUIRED_BEATS:
+			$Sprite2D.modulate = Color(0, 1, 0) 
+			can_move = false
+		else:
+			print("Czas minął! Atak przerwany")
+			current_state = State.IDLE
+			charge_beats = 0
+			$Sprite2D.modulate = Color(1, 1, 1)
+			can_move = true
 	else:
+		if current_state == State.CHARGING:
+			current_state = State.IDLE
+			charge_beats = 0
+			$Sprite2D.modulate = Color(1, 1, 1)
+		
 		can_move = true
 		
 func gain_xp(amount):
