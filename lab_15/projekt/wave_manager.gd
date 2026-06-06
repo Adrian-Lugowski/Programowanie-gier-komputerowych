@@ -33,11 +33,11 @@ func start_next_wave():
 func spawn_enemy():
 	if enemy_scene:
 		var enemy = enemy_scene.instantiate()
-
+		enemy.set_difficulty(current_wave)
 		if "hp" in enemy:
 			enemy.hp += current_wave 
 		if "damage" in enemy:
-			enemy.attack_damage += int(current_wave / 2.0)
+			enemy.damage += int(current_wave / 2.0)
 			
 		var spawn_points_node = get_parent().get_node_or_null("SpawnPointsEnemy")
 		

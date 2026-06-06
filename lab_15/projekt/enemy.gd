@@ -1,7 +1,7 @@
 extends Area2D
 
 var hp = 2
-var attack_damage = 1
+var damage = 1
 var original_scale = Vector2.ONE
 const TILE_SIZE = 64
 
@@ -26,7 +26,7 @@ func _ready():
 
 func take_damage(amount):
 	hp -= amount
-	print("Trafiony, zostało:", hp, "HP")
+	print("Zostało:", hp, "HP")
 	
 	if sprite:
 		sprite.modulate = Color(1, 0, 0)
@@ -120,7 +120,7 @@ func _on_rhythm_timer_timeout():
 						if collider and collider.is_in_group("player"):
 							print("Przeciwnik atakuje!")
 							if collider.has_method("take_damage"):
-								collider.take_damage(attack_damage)
+								collider.take_damage(damage)
 								
 func warn_player():
 	if sprite:
@@ -129,3 +129,7 @@ func warn_player():
 		var tween = create_tween()
 		tween.tween_property(sprite, "scale", original_scale * 1.2, 0.1)
 		tween.tween_property(sprite, "scale", original_scale, 0.1)
+		
+func set_difficulty(wave_num):
+	damage = 1 + (wave_num - 1)
+	hp += wave_num
