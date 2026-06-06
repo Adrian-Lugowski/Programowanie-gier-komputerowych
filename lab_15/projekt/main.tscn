@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://btkppg5hgrih2" path="res://wave_manager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://rsyn48b2kuw8" path="res://hud.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cbys3l03as3gs" path="res://audio_manager.gd" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://d4in6wi7enyl5" path="res://assets/audio/sound3.wav" id="8_5vw27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("1_1bvp3")
@@ -402,5 +403,8 @@ script = ExtResource("7_272bh")
 [node name="ExplodePlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1531555319]
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=113036523]
+
+[node name="BeatPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=501242470]
+stream = ExtResource("8_5vw27")
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]

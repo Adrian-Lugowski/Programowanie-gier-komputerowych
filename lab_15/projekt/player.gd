@@ -102,6 +102,9 @@ func _on_rhythm_timer_timeout():
 		can_move = false 
 	else:
 		can_move = true
+		var audio = get_tree().get_first_node_in_group("audio_manager")
+		if audio:
+			audio.play_beat()
 		print("|")
 		
 func gain_xp(amount):
