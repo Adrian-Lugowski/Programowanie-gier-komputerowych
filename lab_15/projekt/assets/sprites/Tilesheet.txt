@@ -1,9 +1,41 @@
-Tilesheet information:
+# Beatbound
 
-Tile size                 •  16px × 16px
-Space between tiles       •  1px × 1px
----
-Total tiles (horizontal)  •  12 tiles
-Total tiles (vertical)    •  11 tiles
----
-Total tiles in sheet      •  132 tiles
+## Opis gry
+Beatbound to gra typu dungeon crawler, w której gracz musi kontrolować postać w rytm bitu. Celem gracza jest przetrwanie 5 fal coraz silniejszych przeciwników.
+
+## Główne mechaniki
+- **Rytmiczna rozgrywka**: Ruch gracza i przeciwników odbywa się wyłącznie w takt metronomu. 
+- **System Broni**: Gracz może w każdej chwili przełączać się między dwoma typami uzbrojenia za pomocą klawiszy `1` (Miecz) oraz `2` (Młot):
+  - **Miecz**: Zadaje obrażenia kierunkowe (w stronę, w którą patrzy gracz). Jest szybszy i oferuje wyższe obrażenia punktowe.
+  - **Młot**: Zadaje obrażenia obszarowe dookoła gracza. Wymaga jednak naładowania (przez 3 takty metronomu).
+- **System Levelowania**: Za każdego pokonanego przeciwnika gracz otrzymuje XP. Po zebraniu odpowiedniej ilości doświadczenia następuje awans na wyższy poziom, co zwiększa obrażenia oraz maksymalną pulę punktów życia (HP).
+
+## Informacje techniczne
+- **Silnik**: Godot Engine 4.
+- **Instrukcja uruchomienia**: 
+    1. Otwórz folder projektu w edytorze Godot 4.
+    2. Naciśnij klawisz F5, aby uruchomić grę.
+
+## Sterowanie
+- **Ruch**: Strzałki.
+- **Atak**: Klawisz `Enter` lub `Spacja` (UI Accept).
+- **Zmiana broni**: 
+  - `1`: Miecz
+  - `2`: Młot
+
+## Własne mechanizmy
+Najważniejszymi mechanizmami w projekcie są:
+1. **System ostrzegania Ataków NPC**: Przeciwnicy ostrzegają gracza przed atakiem w takcie poprzedzającym uderzenie (zmiana skali i koloru sprite'a), dzięki czemu można uniknąć ataku.
+2. **Synchronizacja Rytmiczna**: Logika ruchu wrogów i gracza oparta na timerze metronomu.
+
+## Inspiracje
+Gra jest inspirowana mechanikami znanymi z tytułów takich jak *Crypt of the NecroDancer*. Projekt nie jest klonem, lecz autorską interpretacją łączenia walki turowej z rytmiczną w silniku Godot.
+
+## Znane bugi i ograniczenia
+- System audio może wykazywać minimalne przesunięcia.
+- Ataki mieczem mogą być niebezpieczne przez brak znacznika w którym kierunku patrzy się postać.
+- Przeciwnicy mogą utknąć przed ścianą budynku.
+
+## Instrukcja uruchomienia
+1. Otwórz folder projektu w silniku Godot Engine 4.
+2. Uruchom projekt (F5).

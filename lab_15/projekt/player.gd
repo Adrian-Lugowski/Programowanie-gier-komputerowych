@@ -16,6 +16,7 @@ const REQUIRED_BEATS = 3
 var facing_direction = Vector2.RIGHT
 
 var hp = 5
+var max_hp = 5
 var player_xp = 0
 var player_level = 1
 var base_damage = 1
@@ -24,15 +25,20 @@ func _ready():
 	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
-		hud.update_hp(hp)
-
+		hud.call_deferred("update_hp", hp)
+		hud.call_deferred("update_weapon", current_weapon)
+		hud.call_deferred("update_level", player_level)
+		
 func _process(delta):
+	var hud = get_tree().get_first_node_in_group("hud")
 	if Input.is_action_just_pressed("equip_sword"):
 		current_weapon = Weapon.SWORD
 		print("MIECZ")
+		if hud: hud.update_weapon(current_weapon)
 	elif Input.is_action_just_pressed("equip_hammer"):
 		current_weapon = Weapon.HAMMER
 		print("MŁOT")
+		if hud: hud.update_weapon(current_weapon)
 		
 	# Atak młotem
 	if current_state == State.CHARGING and Input.is_action_just_released("ui_accept"):
@@ -94,6 +100,13 @@ func _process(delta):
 			print("Ściana")
 			
 func _on_rhythm_timer_timeout():
+	var metronome = get_tree().get_first_node_in_group("metronom")
+	var hud = get_tree().get_first_node_in_group("hud")
+	var audio = get_tree().get_first_node_in_group("audio_manager")
+	
+	if audio:
+		audio.play_beat()
+	
 	if current_weapon == Weapon.HAMMER and Input.is_action_pressed("ui_accept"):
 		current_state = State.CHARGING
 		charge_beats += 1
@@ -102,10 +115,6 @@ func _on_rhythm_timer_timeout():
 		can_move = false 
 	else:
 		can_move = true
-		var audio = get_tree().get_first_node_in_group("audio_manager")
-		if audio:
-			audio.play_beat()
-		print("|")
 		
 func gain_xp(amount):
 	player_xp += amount
@@ -114,8 +123,16 @@ func gain_xp(amount):
 		player_xp = 0
 		player_level += 1
 		base_damage += 1
-		print("LEVEL: ", player_level, ". Obrażenia: ", base_damage)
 		
+		max_hp += 2
+		hp = max_hp
+		print("LEVEL UP! HP: ", hp, "/", max_hp)
+		
+		var hud = get_tree().get_first_node_in_group("hud")
+		if hud:
+			hud.update_hp(hp)
+			hud.set_max_hp(max_hp)
+			
 func take_damage(amount):
 	hp -= amount
 	print("HP: ", hp)
@@ -125,6 +142,8 @@ func take_damage(amount):
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.update_hp(hp)
+		hud.set_max_hp(max_hp)
+		hud.update_level(player_level)
 		
 	if hp <= 0:
 		get_tree().call_deferred("change_scene_to_file", "res://game_over.tscn")

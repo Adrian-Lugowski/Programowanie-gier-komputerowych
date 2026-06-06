@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c1flh5gwa7g26" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://bs6esqy3dx1cq" path="res://assets/sprites/Tiles/tile_0087.png" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cbys3l03as3gs" path="res://audio_manager.gd" id="3_hqtel"]
+[ext_resource type="AudioStream" uid="uid://d4in6wi7enyl5" path="res://assets/audio/sound3.wav" id="4_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
 size = Vector2(50, 50)
@@ -30,3 +32,15 @@ position_smoothing_enabled = true
 position = Vector2(32, 32)
 enabled = false
 collide_with_areas = true
+
+[node name="AudioManager" type="Node" parent="." unique_id=773397904 groups=["audio_manager"]]
+script = ExtResource("3_hqtel")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1155929433]
+
+[node name="ExplodePlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=2088205103]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=381391012]
+
+[node name="BeatPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=332799907]
+stream = ExtResource("4_sweqy")

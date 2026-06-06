@@ -54,10 +54,8 @@ func die():
 func _on_rhythm_timer_timeout():
 	beat_counter += 1
 	
-	# Pobieramy gracza, bo przyda nam się i do sprawdzania odległości, i do ataku
 	var player = get_tree().get_first_node_in_group("player")
 	
-	# --- NOWE: SYGNALIZACJA TYLKO PRZED ATAKIEM ---
 	if beat_counter == move_every_n_beats - 1:
 		if player:
 			var direction = Vector2.ZERO
@@ -71,7 +69,9 @@ func _on_rhythm_timer_timeout():
 			if direction != Vector2.ZERO and ray:
 				ray.target_position = direction * (TILE_SIZE * 0.8)
 				ray.force_raycast_update()
-				
+				var tween = create_tween()
+				tween.tween_property(sprite, "scale", original_scale * 1.2, 0.1)
+				tween.tween_property(sprite, "scale", original_scale, 0.1)
 				if ray.is_colliding():
 					var collider = ray.get_collider()
 					if collider and collider.is_in_group("player"):

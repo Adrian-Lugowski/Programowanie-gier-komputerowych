@@ -328,12 +328,6 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7mycd")
 sources/2 = SubResource("TileSetAtlasSource_272bh")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
-bg_color = Color(0, 0, 0, 0.74509805)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
-bg_color = Color(0, 0, 0, 0.79607844)
-
 [node name="Main" type="Node2D" unique_id=338913653]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1591143576]
@@ -388,6 +382,16 @@ script = ExtResource("6_7mycd")
 sword_texture = ExtResource("7_5vw27")
 hammer_texture = ExtResource("8_kek77")
 
+[node name="WaveLabel" type="Label" parent="HUD" unique_id=411448685]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_right = 36.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+
 [node name="HPBar" type="ProgressBar" parent="HUD" unique_id=1558808097]
 offset_right = 320.0
 offset_bottom = 27.0
@@ -401,6 +405,34 @@ offset_left = 256.0
 offset_right = 296.0
 offset_bottom = 23.0
 
+[node name="BeatIndicator" type="Control" parent="HUD" unique_id=76700945]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LeftLine" type="ColorRect" parent="HUD/BeatIndicator" unique_id=946840771]
+layout_mode = 0
+offset_left = -192.0
+offset_top = -4.0
+offset_right = -187.0
+offset_bottom = 46.0
+pivot_offset = Vector2(2.5, 25)
+
+[node name="RightLine" type="ColorRect" parent="HUD/BeatIndicator" unique_id=1048567881]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -4.0
+offset_right = 261.0
+offset_bottom = 46.0
+pivot_offset = Vector2(2.5, 25)
+
 [node name="WeaponIcon" type="TextureRect" parent="HUD" unique_id=1274169006]
 anchors_preset = 1
 anchor_left = 1.0
@@ -408,46 +440,5 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-
-[node name="Panel" type="Panel" parent="HUD" unique_id=1980973735]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 64.0
-grow_vertical = 0
-pivot_offset = Vector2(30, 20)
-theme_override_styles/panel = SubResource("StyleBoxFlat_5vw27")
-
-[node name="LevelLabel" type="Label" parent="HUD/Panel" unique_id=258639756]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 64.0
-grow_vertical = 0
-horizontal_alignment = 1
-
-[node name="Panel2" type="Panel" parent="HUD" unique_id=1730927500]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -64.0
-offset_right = 128.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kek77")
-
-[node name="WaveLabel" type="Label" parent="HUD/Panel2" unique_id=411448685]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -36.5
-offset_right = 36.5
-offset_bottom = 45.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
