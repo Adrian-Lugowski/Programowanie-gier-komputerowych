@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6728er8qq8wu" path="res://assets/sprites/Tilemap/tilemap_packed.png" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://btkppg5hgrih2" path="res://wave_manager.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://rsyn48b2kuw8" path="res://hud.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://cbys3l03as3gs" path="res://audio_manager.gd" id="7_272bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("1_1bvp3")
@@ -392,5 +393,14 @@ offset_bottom = 27.0
 max_value = 3.0
 step = 1.0
 show_percentage = false
+
+[node name="AudioManager" type="Node" parent="." unique_id=301601791 groups=["audio_manager"]]
+script = ExtResource("7_272bh")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1297743008]
+
+[node name="ExplodePlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=1531555319]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager" unique_id=113036523]
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]
