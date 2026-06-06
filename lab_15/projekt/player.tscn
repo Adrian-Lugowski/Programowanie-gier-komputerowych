@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1flh5gwa7g26" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://bs6esqy3dx1cq" path="res://assets/sprites/Tiles/tile_0087.png" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cbys3l03as3gs" path="res://audio_manager.gd" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://b0av7sxt4y67d" path="res://assets/sprites/Tiles/tile_0103.png" id="3_sweqy"]
 [ext_resource type="AudioStream" uid="uid://d4in6wi7enyl5" path="res://assets/audio/sound3.wav" id="4_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
@@ -15,6 +16,11 @@ script = ExtResource("1_4flbx")
 position = Vector2(32, 32)
 scale = Vector2(4, 4)
 texture = ExtResource("2_onrkg")
+
+[node name="DirectionIndicator" type="Sprite2D" parent="Sprite2D" unique_id=283173070]
+position = Vector2(7.48, 4.2)
+rotation = 1.5707964
+texture = ExtResource("3_sweqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=248943606]
 position = Vector2(32, 32)

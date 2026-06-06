@@ -4,6 +4,7 @@ const TILE_SIZE = 64
 var can_move = false
 
 @onready var ray = $RayCast2D
+@onready var indicator = $Sprite2D/DirectionIndicator
 
 enum State { IDLE, CHARGING }
 var current_state = State.IDLE
@@ -86,6 +87,7 @@ func _process(delta):
 
 	if direction != Vector2.ZERO:
 		facing_direction = direction
+		indicator.rotation = direction.angle() + deg_to_rad(90)
 		var next_position = position + (direction * TILE_SIZE)
 		var map_min_x = 0
 		var map_min_y = 0
