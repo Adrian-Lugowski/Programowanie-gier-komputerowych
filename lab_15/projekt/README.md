@@ -13,8 +13,8 @@ Beatbound to gra typu dungeon crawler, w której gracz musi kontrolować postać
 ## Informacje techniczne
 - **Silnik**: Godot Engine 4.
 - **Instrukcja uruchomienia**: 
-    1. Otwórz folder projektu w edytorze Godot 4.
-    2. Naciśnij klawisz F5, aby uruchomić grę.
+    1. Otwórz folder projektu.
+    2. Uruchom plik *Beatbound.exe*.
 
 ## Sterowanie
 - **Ruch**: Strzałki.
@@ -33,7 +33,6 @@ Gra jest inspirowana mechanikami znanymi z tytułów takich jak *Crypt of the Ne
 
 ## Znane bugi i ograniczenia
 - System audio może wykazywać minimalne przesunięcia.
-- Ataki mieczem mogą być niebezpieczne przez brak znacznika w którym kierunku patrzy się postać.
 - Przeciwnicy mogą utknąć przed ścianą budynku.
 
 ## Instrukcja uruchomienia
