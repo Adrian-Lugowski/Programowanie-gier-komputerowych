@@ -34,7 +34,3 @@ Gra jest inspirowana mechanikami znanymi z tytułów takich jak *Crypt of the Ne
 ## Znane bugi i ograniczenia
 - System audio może wykazywać minimalne przesunięcia.
 - Przeciwnicy mogą utknąć przed ścianą budynku.
-
-## Instrukcja uruchomienia
-1. Otwórz folder projektu w silniku Godot Engine 4.
-2. Uruchom projekt (F5).
