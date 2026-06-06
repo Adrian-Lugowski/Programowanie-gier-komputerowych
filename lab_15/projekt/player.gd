@@ -81,7 +81,8 @@ func _process(delta):
 			ray.target_position = direction * TILE_SIZE
 			ray.force_raycast_update()
 			if not ray.is_colliding():
-				position = next_position
+				var tween = create_tween()
+				tween.tween_property(self, "position", next_position, 0.1)
 				can_move = false
 			else:
 				var uderzony_obiekt = ray.get_collider()

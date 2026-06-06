@@ -74,7 +74,8 @@ func _on_rhythm_timer_timeout():
 					ray.force_raycast_update()
 					
 					if not ray.is_colliding():
-						position = target_pos
+						var tween = create_tween()
+						tween.tween_property(self, "position", target_pos, 0.15)
 					else:
 						var collider = ray.get_collider()
 						if collider and collider.is_in_group("player"):
