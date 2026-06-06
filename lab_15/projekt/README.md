@@ -29,7 +29,7 @@ Najważniejszymi mechanizmami w projekcie są:
 2. **Synchronizacja Rytmiczna**: Logika ruchu wrogów i gracza oparta na timerze metronomu.
 
 ## Inspiracje
-Gra jest inspirowana mechanikami znanymi z tytułów takich jak *Crypt of the NecroDancer*. Projekt nie jest klonem, lecz autorską interpretacją łączenia walki turowej z rytmiczną w silniku Godot.
+Gra jest inspirowana mechanikami znanymi z tytułów takich jak *Crypt of the NecroDancer*.
 
 ## Znane bugi i ograniczenia
 - System audio może wykazywać minimalne przesunięcia.
