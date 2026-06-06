@@ -149,12 +149,11 @@ func gain_xp(amount):
 		
 		max_hp += 2
 		hp = max_hp
-		print("LEVEL UP! HP: ", hp, "/", max_hp)
-		
 		var hud = get_tree().get_first_node_in_group("hud")
 		if hud:
+			hud.set_max_hp(max_hp) 
 			hud.update_hp(hp)
-			hud.set_max_hp(max_hp)
+			hud.update_level(player_level)
 			
 func take_damage(amount):
 	hp -= amount
