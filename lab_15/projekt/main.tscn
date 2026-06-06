@@ -329,10 +329,10 @@ sources/1 = SubResource("TileSetAtlasSource_7mycd")
 sources/2 = SubResource("TileSetAtlasSource_272bh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
-bg_color = Color(0, 0, 0, 0.74509805)
+bg_color = Color(0, 0, 0, 0.5411765)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
-bg_color = Color(0, 0, 0, 0.79607844)
+bg_color = Color(0, 0, 0, 0.4862745)
 
 [node name="Main" type="Node2D" unique_id=338913653]
 
@@ -418,15 +418,7 @@ offset_left = 256.0
 offset_right = 296.0
 offset_bottom = 23.0
 
-[node name="WeaponIcon" type="TextureRect" parent="HUD" unique_id=1274169006]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Panel" type="Panel" parent="HUD" unique_id=1980973735]
+[node name="PanelLevel" type="Panel" parent="HUD" unique_id=1980973735]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -436,7 +428,7 @@ grow_vertical = 0
 pivot_offset = Vector2(30, 20)
 theme_override_styles/panel = SubResource("StyleBoxFlat_5vw27")
 
-[node name="LevelLabel" type="Label" parent="HUD/Panel" unique_id=258639756]
+[node name="LevelLabel" type="Label" parent="HUD/PanelLevel" unique_id=258639756]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -446,7 +438,7 @@ offset_right = 64.0
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="Panel2" type="Panel" parent="HUD" unique_id=1730927500]
+[node name="PanelWave" type="Panel" parent="HUD" unique_id=1730927500]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -456,7 +448,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kek77")
 
-[node name="WaveLabel" type="Label" parent="HUD/Panel2" unique_id=411448685]
+[node name="WaveLabel" type="Label" parent="HUD/PanelWave" unique_id=411448685]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -466,5 +458,22 @@ offset_right = 36.5
 offset_bottom = 45.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
+
+[node name="PanelWeapon" type="Panel" parent="HUD" unique_id=221832468]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="WeaponIcon" type="TextureRect" parent="HUD/PanelWeapon" unique_id=1274169006]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]

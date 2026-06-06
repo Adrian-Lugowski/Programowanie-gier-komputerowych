@@ -1,12 +1,12 @@
 extends CanvasLayer
 
 @onready var hp_bar = $HPBar
-@onready var weapon_icon = $WeaponIcon
+@onready var weapon_icon = $PanelWeapon/WeaponIcon
 @export var sword_texture: Texture2D
 @export var hammer_texture: Texture2D
-@onready var wave_label = $Panel2/WaveLabel
+@onready var wave_label = $PanelWave/WaveLabel
 @onready var hp_label = $HPBar/HPLabel
-@onready var level_label = $Panel/LevelLabel
+@onready var level_label = $PanelLevel/LevelLabel
 
 func update_hp(new_hp):
 	if hp_bar:
