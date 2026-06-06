@@ -2,6 +2,7 @@ extends Area2D
 
 var hp = 2
 var attack_damage = 1
+var original_scale = Vector2.ONE
 const TILE_SIZE = 64
 
 var beat_counter = 0
@@ -19,6 +20,9 @@ func _ready():
 	var timer = get_tree().get_first_node_in_group("metronom")
 	if timer:
 		timer.timeout.connect(_on_rhythm_timer_timeout)
+		
+	if sprite:
+		original_scale = sprite.scale
 
 func take_damage(amount):
 	hp -= amount
@@ -42,12 +46,40 @@ func die():
 
 func _on_rhythm_timer_timeout():
 	beat_counter += 1
+	
+	# Pobieramy gracza, bo przyda nam się i do sprawdzania odległości, i do ataku
+	var player = get_tree().get_first_node_in_group("player")
+	
+	# --- NOWE: SYGNALIZACJA TYLKO PRZED ATAKIEM ---
+	if beat_counter == move_every_n_beats - 1:
+		if player:
+			var direction = Vector2.ZERO
+			var diff = player.position - position
+			
+			if abs(diff.x) > abs(diff.y):
+				direction = Vector2.RIGHT if diff.x > 0 else Vector2.LEFT
+			else:
+				direction = Vector2.DOWN if diff.y > 0 else Vector2.UP
+				
+			if direction != Vector2.ZERO and ray:
+				ray.target_position = direction * (TILE_SIZE * 0.8)
+				ray.force_raycast_update()
+				
+				if ray.is_colliding():
+					var collider = ray.get_collider()
+					if collider and collider.is_in_group("player"):
+						warn_player()
+		return
+	
 	if beat_counter < move_every_n_beats:
 		return
 	
 	beat_counter = 0
 	
-	var player = get_tree().get_first_node_in_group("player")
+	if sprite:
+		sprite.modulate = Color(1, 1, 1)
+		sprite.scale = original_scale
+	
 	if player:
 		var direction = Vector2.ZERO
 		var diff = player.position - position
@@ -82,3 +114,11 @@ func _on_rhythm_timer_timeout():
 							print("Przeciwnik atakuje!")
 							if collider.has_method("take_damage"):
 								collider.take_damage(attack_damage)
+								
+func warn_player():
+	if sprite:
+		sprite.modulate = Color(1.0, 0.6, 0.0) 
+		
+		var tween = create_tween()
+		tween.tween_property(sprite, "scale", original_scale * 1.2, 0.1)
+		tween.tween_property(sprite, "scale", original_scale, 0.1)

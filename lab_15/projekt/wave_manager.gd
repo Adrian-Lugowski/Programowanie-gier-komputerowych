@@ -19,6 +19,10 @@ func start_next_wave():
 	is_spawning = true
 	current_wave += 1
 	print("Fala: ", current_wave)
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_wave(current_wave)
+		
 	await get_tree().create_timer(2.0).timeout
 	var enemies_to_spawn = 2 + current_wave 
 	for i in range(enemies_to_spawn):

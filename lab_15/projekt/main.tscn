@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://0g0pntwfb1t7" path="res://enemy.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://b6728er8qq8wu" path="res://assets/sprites/Tilemap/tilemap_packed.png" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://btkppg5hgrih2" path="res://wave_manager.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://rsyn48b2kuw8" path="res://hud.gd" id="6_7mycd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("1_1bvp3")
@@ -371,5 +372,25 @@ position = Vector2(192, 256)
 
 [node name="Marker2D10" type="Marker2D" parent="SpawnPoints" unique_id=2063066356]
 position = Vector2(896, 384)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=980188000 groups=["hud"]]
+script = ExtResource("6_7mycd")
+
+[node name="WaveLabel" type="Label" parent="HUD" unique_id=411448685]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.5
+offset_right = 36.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="HPBar" type="ProgressBar" parent="HUD" unique_id=1558808097]
+offset_right = 192.0
+offset_bottom = 27.0
+max_value = 3.0
+step = 1.0
+show_percentage = false
 
 [connection signal="timeout" from="RhythmTimer" to="Player" method="_on_rhythm_timer_timeout"]

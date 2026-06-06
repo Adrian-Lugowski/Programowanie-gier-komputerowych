@@ -15,13 +15,16 @@ var charge_beats = 0
 const REQUIRED_BEATS = 3
 var facing_direction = Vector2.RIGHT
 
-var hp = 3
+var hp = 5
 var player_xp = 0
 var player_level = 1
 var base_damage = 1
 
 func _ready():
 	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_hp(hp)
 
 func _process(delta):
 	if Input.is_action_just_pressed("equip_sword"):
@@ -116,7 +119,10 @@ func take_damage(amount):
 	$Sprite2D.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.2).timeout
 	$Sprite2D.modulate = Color(1, 1, 1)
-	
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.update_hp(hp)
+		
 	if hp <= 0:
 		get_tree().call_deferred("change_scene_to_file", "res://game_over.tscn")
 	
