@@ -1,6 +1,29 @@
 [gd_scene format=3 uid="uid://dg4a4671oxtiv"]
 
 [ext_resource type="Script" uid="uid://birxekc0qghd" path="res://game_over.gd" id="1_wao2c"]
+[ext_resource type="Texture2D" uid="uid://ccgxr4eiyrbai" path="res://assets/sprites/Tiles/tile_0040.png" id="2_hgi8f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wao2c"]
+bg_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgi8f"]
+bg_color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="GameOver" type="Control" unique_id=23197882]
 layout_mode = 3
@@ -11,6 +34,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wao2c")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1067845051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hgi8f")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Button" type="Button" parent="." unique_id=648150513]
 layout_mode = 1
 anchors_preset = 7
@@ -18,11 +52,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -149.5
-offset_top = -83.0
-offset_right = 149.5
+offset_left = -17.0
+offset_top = -156.0
+offset_right = 282.0
+offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_wao2c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgi8f")
 text = "Powrót to menu"
 
 [node name="Label" type="Label" parent="." unique_id=1686939052]
@@ -32,12 +69,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.5
-offset_top = -11.5
-offset_right = 35.5
-offset_bottom = 11.5
+offset_left = -139.0
+offset_top = -128.0
+offset_right = -6.5
+offset_bottom = -69.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 73
 text = "Wygrałeś"
 horizontal_alignment = 1
 vertical_alignment = 1
